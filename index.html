@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joanna & Mateusz | Swing Dancers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #FFE66D;
+            --accent: #4ECDC4;
+            --text: #2D3436;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('photo/landing-01.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about {
+            background: var(--light-gray);
+        }
+
+        .about-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .about-img {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 350px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .videos {
+            background: var(--light-gray);
+        }
+
+        .videos h2 {
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .contact {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('photo/contact-01.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .contact-content h2 {
+            margin-bottom: 2rem;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 107, 0.6);
+        }
+
+        footer {
+            background: var(--text);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .gallery-grid,
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav a {
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Joanna & Mateusz</div>
+        <div>
+            <a href="#about">About</a>
+            <a href="#gallery">Photos</a>
+            <a href="#videos">Videos</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Joanna & Mateusz</h1>
+        <p>Swing Dance Duo</p>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <img src="photo/about-us.jpg" alt="About Joanna & Mateusz" class="about-img">
+            <h2>About Us</h2>
+            <p>We are passionate swing dancers who bring energy and joy to every dance floor. Whether performing or teaching, we share our love for Lindy Hop, Charleston, and all things swing.</p>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>Photo Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="photo/asia-mateusz-10.jpg" alt="Joanna & Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-mateusz-09.jpg" alt="Joanna & Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-mateusz-08.jpg" alt="Joanna & Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-mateusz-07.jpg" alt="Joanna & Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-mateusz-06.jpg" alt="Joanna & Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-mateusz-05.jpg" alt="Joanna & Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-mateusz-04.jpg" alt="Joanna & Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-06.jpg" alt="Joanna">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-04.jpg" alt="Joanna">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-03.jpg" alt="Joanna">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-02.jpg" alt="Joanna">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/asia-01.jpg" alt="Joanna">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/mateusz-03.jpg" alt="Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/mateusz-02.jpg" alt="Mateusz">
+            </div>
+            <div class="gallery-item">
+                <img src="photo/mateusz-01.jpg" alt="Mateusz">
+            </div>
+        </div>
+    </section>
+
+    <section class="videos" id="videos">
+        <h2>Videos</h2>
+        <div class="video-grid">
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="vid/202408_narodni-muzeum_final-02.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="vid/kmita_bal-crew_final-01b.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="vid/BD-strzelnica_napisy-02-103.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="vid/heula-01.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2>Get in Touch</h2>
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com">📧 Email Us</a>
+                <a href="#">📱 Instagram</a>
+                <a href="#">📘 Facebook</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Joanna & Mateusz - Swing Dance Duo. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Media - upload directly to VPS
+photo/
+vid/
+
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
