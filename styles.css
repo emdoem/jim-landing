@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #FF6B6B;
+    --secondary: #FFE66D;
+    --accent: #4ECDC4;
+    --text: #2D3436;
+    --white: #FFFFFF;
+    --light-gray: #F8F9FA;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playlist&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    height: 80px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+section {
+    min-height: 100vh;
+    padding: 6rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('photo/landing-01.jpg');
+    background-size: cover;
+    background-position: top;
+    color: var(--white);
+    text-align: center;
+    padding-top: 80px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    font-family: 'Bodoni Moda';
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: 2.5rem;
+    font-family: 'Playlist', cursive;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.2s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about {
+    background: var(--light-gray);
+    padding: 4rem 2rem;
+}
+
+.about-layout {
+    max-width: 1000px;
+    width: 100%;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.about-text {
+    text-align: left;
+}
+
+.about-text h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.gallery {
+    background: var(--white);
+}
+
+.gallery h2 {
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 400px;
+    gap: 1.5rem;
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item-vert {
+    grid-row: span 1;
+}
+
+.gallery-item-hor {
+    grid-column: span 2;
+}
+
+.videos {
+    background: var(--light-gray);
+}
+
+.videos h2 {
+    color: var(--accent);
+    margin-bottom: 2rem;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.video-wrapper {
+    position: relative;
+    height: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.video-wrapper-vert {
+    padding-bottom: 177.78%;
+}
+
+.video-wrapper-hor {
+    padding-bottom: 56.25%;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contact {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('photo/contact-01.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+}
+
+.contact-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.contact-content h2 {
+    margin-bottom: 2rem;
+}
+
+.contact-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    background: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+}
+
+.contact-links a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 107, 107, 0.6);
+}
+
+footer {
+    background: var(--text);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 1rem 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        padding-top: 0;
+        min-height: 60vh;
+    }
+
+    .about {
+        padding: 3rem 1rem;
+        min-height: auto;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-img {
+        height: 400px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .gallery-item {
+        height: auto;
+    }
+
+    .gallery-item-vert,
+    .gallery-item-hor {
+        grid-row: auto;
+        grid-column: auto;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.75rem;
+    }
+
+    nav a {
+        margin: 0;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
